@@ -77,6 +77,34 @@ export default function ExpenseTable({ expenses, deleteExpense, updateExpense }:
         boxShadow: 24,
         p: 2,
     };
+    const tableStyles = {
+        fontSize: "1rem",
+        "@media screen and (max-width: 700px)": {
+            fontSize: ".8rem",
+            padding: "8px",
+        },
+        "@media screen and (max-width: 535px)": {
+            fontSize: ".7rem",
+            padding: "3px",
+        },
+        "@media screen and (max-width: 400px)": {
+            fontSize: ".6rem",
+            padding: "1px",
+        },
+    };
+    const buttonStyles = {
+        height: "2em",
+        minWidth: "2em",
+        padding: ".25em",
+        margin: "0 .5em",
+        "@media screen and (max-width: 700px)": {
+            margin: 0,
+        },
+        "@media screen and (max-width: 535px)": {
+            height: "1.5em",
+            padding: "0em",
+        },
+    };
     return (
         <>
             {isUpdateModalOpen ? (
@@ -124,38 +152,44 @@ export default function ExpenseTable({ expenses, deleteExpense, updateExpense }:
                     <Table sx={{ border: "3px solid black" }} aria-label="simple table">
                         <TableHead>
                             <TableRow className="font-weight-bold">
-                                <TableCell>Name of Expense</TableCell>
-                                <TableCell align="right" className="font-weight-bold">
+                                <TableCell sx={tableStyles}>Name of Expense</TableCell>
+                                <TableCell align="right" sx={tableStyles}>
                                     Type of Expense
                                 </TableCell>
-                                <TableCell align="right" className="font-weight-bold">
+                                <TableCell align="right" sx={tableStyles}>
                                     Amount (in $USD)
                                 </TableCell>
-                                <TableCell align="right" className="font-weight-bold">
+                                <TableCell align="right" sx={tableStyles}>
                                     Frequency Paid
                                 </TableCell>
-                                <TableCell align="right" className="font-weight-bold">
+                                <TableCell align="right" sx={tableStyles}>
                                     Created || Updated
                                 </TableCell>
-                                <TableCell align="center" className="font-weight-bold">
+                                <TableCell align="center" sx={tableStyles}>
                                     Action
                                 </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {expenses.map((row) => (
-                                <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                                    <TableCell component="th" scope="row">
+                                <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }} className="table-font">
+                                    <TableCell component="th" scope="row" sx={tableStyles}>
                                         {row.nameOfExpense}
                                     </TableCell>
-                                    <TableCell align="right">{row.typeOfExpense}</TableCell>
-                                    <TableCell align="right">${row.expenseAmount}</TableCell>
-                                    <TableCell align="right">{row.frequencyOfExpenseMonthly}</TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="right" sx={tableStyles}>
+                                        {row.typeOfExpense}
+                                    </TableCell>
+                                    <TableCell align="right" sx={tableStyles}>
+                                        ${row.expenseAmount}
+                                    </TableCell>
+                                    <TableCell align="right" sx={tableStyles}>
+                                        {row.frequencyOfExpenseMonthly}
+                                    </TableCell>
+                                    <TableCell align="right" sx={tableStyles}>
                                         {row.createdDate} || {row.updatedDate}
                                     </TableCell>
-                                    <TableCell className="border border-left">
-                                        <div>
+                                    <TableCell className="border border-left" sx={tableStyles}>
+                                        <div className="small-button-grouping">
                                             <Tooltip
                                                 title={<Typography fontSize={"1.4em"}>Update</Typography>}
                                                 TransitionComponent={Zoom}
@@ -163,13 +197,7 @@ export default function ExpenseTable({ expenses, deleteExpense, updateExpense }:
                                                 arrow={true}
                                                 placement="left"
                                             >
-                                                <Button
-                                                    variant="outlined"
-                                                    sx={{ height: "2em", minWidth: "2em", padding: ".25em", margin: "0 .5em" }}
-                                                    className="btn-expand"
-                                                    color="secondary"
-                                                    onClick={() => handleExpenseUpdateModalOpen(row)}
-                                                >
+                                                <Button variant="outlined" sx={buttonStyles} className="btn-expand" color="secondary" onClick={() => handleExpenseUpdateModalOpen(row)}>
                                                     <UpgradeRoundedIcon />
                                                 </Button>
                                             </Tooltip>
@@ -180,13 +208,7 @@ export default function ExpenseTable({ expenses, deleteExpense, updateExpense }:
                                                 arrow={true}
                                                 placement="right"
                                             >
-                                                <Button
-                                                    variant="outlined"
-                                                    sx={{ height: "2em", minWidth: "2em", padding: ".25em", margin: "0 .5em" }}
-                                                    onClick={() => deleteExpense(row.id)}
-                                                    className="btn-expand"
-                                                    color="error"
-                                                >
+                                                <Button variant="outlined" sx={buttonStyles} onClick={() => deleteExpense(row.id)} className="btn-expand" color="error">
                                                     <DeleteRoundedIcon />
                                                 </Button>
                                             </Tooltip>

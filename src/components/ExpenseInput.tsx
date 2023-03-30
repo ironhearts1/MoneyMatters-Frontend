@@ -13,7 +13,7 @@ import axios from "axios";
 const PAYMENT_FREQUENCY_VALUES: Array<string> = ["Monthly", "Bi-Weekly", "Weekly", "Daily"];
 
 export default function ExpenseInput({ username, addExpense }: expenseInputProps) {
-    const url = "http://localhost:8080/api/v1";
+    const url = "https://moneymatters-backend-production.up.railway.app/api/v1";
     // const [exName, setExName] = useState("");
     // const [exType, setExType] = useState("second");
     // const [exAmount, setExAmount] = useState(0);
@@ -31,7 +31,12 @@ export default function ExpenseInput({ username, addExpense }: expenseInputProps
         let expenseAmount = form.current.amount.value;
         //@ts-ignore
         let frequencyOfExpenseMonthly = form.current.frequency.value;
-
+        // , {
+        //     headers: {
+        //         "content-type": "application/json",
+        //         mode: "cors",
+        //     },
+        // }
         const postBody = { nameOfExpense, typeOfExpense, expenseAmount, frequencyOfExpenseMonthly };
         console.log(postBody, username);
         axios.post(`${url}/${username}/addex`, postBody).then((res) => addExpense(res.data.expense));
@@ -45,7 +50,7 @@ export default function ExpenseInput({ username, addExpense }: expenseInputProps
             }}
             noValidate
             autoComplete="off"
-            className="m-3 p-2"
+            className="m-lg-3 p-lg-2 m-md-1 p-md-1 m-sm-3 p-sm-2 m-1 p-1"
             onSubmit={handleExpenseSubmit}
             ref={form}
         >
@@ -62,10 +67,10 @@ export default function ExpenseInput({ username, addExpense }: expenseInputProps
                 </Select>
             </FormControl>
             <div className="d-flex justify-content-center mt-2">
-                <Button variant="contained" color="success" className="mx-4 btn-expand" onClick={handleExpenseSubmit}>
+                <Button variant="contained" color="success" className="mx-sm-4 mx-1 btn-expand button-style" onClick={handleExpenseSubmit}>
                     Submit
                 </Button>
-                <Button variant="outlined" color="error" className="mx-4 btn-expand">
+                <Button variant="outlined" color="error" className="mx-sm-4 mx-1 btn-expand button-style">
                     Cancel
                 </Button>
             </div>

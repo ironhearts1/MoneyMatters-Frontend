@@ -27,7 +27,7 @@ export default function ExpenseChart({ userExpenseList }: expenseChartProps) {
         },
         maintainAspectRatio: false,
     };
-    console.log(userExpenseList);
+
     let test = userExpenseList.map((expense) => {
         console.log(expense);
         let amount = expense.expenseAmount;
@@ -44,7 +44,7 @@ export default function ExpenseChart({ userExpenseList }: expenseChartProps) {
         }
         return total;
     });
-    console.log(test);
+
     let chartData = {
         labels: userExpenseList.map((expense) => expense.nameOfExpense),
         datasets: [
@@ -57,10 +57,10 @@ export default function ExpenseChart({ userExpenseList }: expenseChartProps) {
         ],
     };
     const [chart, setChart] = useState("pie");
-    console.log(chartData);
+
     return (
         <>
-            <div>
+            <div className="expense-chart-flex mb-5">
                 <div>
                     <button className="my-1 mx-1" onClick={() => setChart("pie")}>
                         <FontAwesomeIcon icon={faChartPie} />
@@ -69,7 +69,9 @@ export default function ExpenseChart({ userExpenseList }: expenseChartProps) {
                         <FontAwesomeIcon icon={faSpinner} />
                     </button>
                 </div>
-                <div className="chart-background chart-sizing">{chart === "pie" ? <Pie data={chartData} options={options} /> : <Doughnut data={chartData} options={options} />}</div>
+                <div className="chart-background chart-wrapper-sizing">
+                    {chart === "pie" ? <Pie data={chartData} options={options} className="chart-size" /> : <Doughnut data={chartData} options={options} className="chart-size" />}
+                </div>
             </div>
         </>
     );

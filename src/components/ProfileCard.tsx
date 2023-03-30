@@ -59,13 +59,15 @@ function ProfileCard({ profileUserName, handleModalOpen, profileMonthlyIncome, l
             >
                 <CardHeader>
                     <div className="profile-card-flex">
-                        <h1 style={{ fontWeight: "700", fontSize: "1.25em" }}>Profile</h1>
-                        <Button variant="contained" color="error" onClick={handleLogout}>
+                        <h1 className="main-font" style={{ fontWeight: "700" }}>
+                            Profile
+                        </h1>
+                        <Button variant="contained" className="button-style" color="error" onClick={handleLogout}>
                             Logout
                         </Button>
                     </div>
                 </CardHeader>
-                <ListGroup flush>
+                <ListGroup flush className="sub-font">
                     <ListGroupItem>Username: {`${profileUserName}`}</ListGroupItem>
                     <ListGroupItem className="my-1">
                         <Box component="form" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} className="profile-media-query">

@@ -14,7 +14,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function App() {
-    const url = "http://localhost:8080/api/v1";
+    const url = "https://moneymatters-backend-production.up.railway.app/api/v1";
     const [userLogin, setUserLogin] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [userIncome, setUserIncome] = useState(0);
@@ -216,29 +216,20 @@ function App() {
                 {!userLogin ? null : (
                     <>
                         <div className="hero paddings">
-                            <h1 className="hero-title">Money Matters</h1>
+                            <h1 className="hero-title header-font">Money Matters</h1>
                             <div className="hero-sub">
-                                <h2 className="hero-subtitle">Tracking your expenses and monthly investments for a better future</h2>
+                                <h2 className="hero-subtitle header-font">Tracking your expenses and monthly investments for a better future</h2>
                                 <img className="hero-image" src={heroPic} />
                             </div>
                         </div>
-                        <div className="row justify-content-between flex-wrap align-items-center paddings bg-clr-sub">
-                            <div className="expense-input-wrapper col-4 ">
-                                <ExpenseInput username={userLogin} addExpense={handleAddExpense} />
-                            </div>
-                            <div className="col-2">
-                                <h2 className="">Input your reoccuring expenses here to add them to your account</h2>
-                                <div>
-                                    <ArrowBackIcon />
-                                </div>
-                            </div>
-                            <div className="col-2 text-end">
-                                <h2>Your profile stats! Update your monthly income here</h2>
+                        <div className="row justify-content-between flex-wrap align-items-center paddings bg-clr-sub ">
+                            <div className="col-md-2 col-4 text-end order-md-3">
+                                <h2 className="main-font">Your profile stats! Update your monthly income here</h2>
                                 <div className="">
                                     <ArrowForwardIcon />
                                 </div>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-4 col-8 mb-5 mb-md-0 order-md-4">
                                 <ProfileCard
                                     profileUserName={userLogin}
                                     profileMonthlyIncome={userIncome}
@@ -249,19 +240,28 @@ function App() {
                                     updateIncome={handleUpdateIncome}
                                 />
                             </div>
+                            <div className="expense-input-wrapper col-md-4 col-8 order-md-1">
+                                <ExpenseInput username={userLogin} addExpense={handleAddExpense} />
+                            </div>
+                            <div className="col-md-2 col-4 order-md-2 test">
+                                <h2 className="main-font">Input your reoccuring expenses here to add them to your account</h2>
+                                <div>
+                                    <ArrowBackIcon />
+                                </div>
+                            </div>
                         </div>
-                        <div className="row my-5 justify-content-center ">
+                        <div className="row my-5 justify-content-center paddings">
                             <div className="col-auto">
-                                <h2 className="text-center">All currently added expenses</h2>
+                                <h2 className="text-center main-font">All currently added expenses</h2>
                                 <ExpenseTable expenses={tableExpenses} deleteExpense={handleDeleteExpense} updateExpense={handleUpdateExpense} />
                             </div>
                         </div>
 
-                        <div className="row justify-content-center my-5 bg-clr-sub paddings">
+                        <div className="row my-5 bg-clr-sub paddings">
                             <div className="col-12 expense-chart-wrapper">
                                 <div>
-                                    <h2 className="expense-chart-text py-4 text-center">Being able to visualize which expenses dominate your budget every month is incredibly important</h2>
-                                    <h2 className="expense-chart-text py-4 text-center">
+                                    <h2 className="main-font py-md-4 py-1 text-center">Being able to visualize which expenses dominate your budget every month is incredibly important</h2>
+                                    <h2 className="main-font py-md-4 py-1 text-center">
                                         If you want to be increasing your net flow of cash at the end of the month, ask yourself which of these can be reduced!
                                     </h2>
                                 </div>
@@ -270,14 +270,16 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="row justify-content-center my-5 paddings">
+                        <div className="row justify-content-center my-5 paddings ">
                             {userNetIncome > 0 ? (
                                 <div className="w-75">
-                                    <h2>This is your monthly profit if it was all invested each month. The average return on the stock market over time is 10%. This chart shows that average +- 2%</h2>
+                                    <h2 className="main-font">
+                                        This is your monthly profit if it was all invested each month. The average return on the stock market over time is 10%. This chart shows that average +- 2%
+                                    </h2>
                                     <FutureValue netIncome={userNetIncome} />
                                 </div>
                             ) : (
-                                <h2>DO NOT HAVE ENOUGH INCOME TO INVEST</h2>
+                                <h2 className="header-font">DO NOT HAVE ENOUGH INCOME TO INVEST</h2>
                             )}
                         </div>
                     </>
