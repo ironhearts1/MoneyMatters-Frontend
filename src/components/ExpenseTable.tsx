@@ -76,6 +76,15 @@ export default function ExpenseTable({ expenses, deleteExpense, updateExpense }:
         border: "2px solid #000",
         boxShadow: 24,
         p: 2,
+
+        "@media screen and (max-width: 1025px)": {
+            width: "90%",
+            height: "60%",
+        },
+        "@media screen and (max-width: 550px)": {
+            width: "90%",
+            height: "80%",
+        },
     };
     const tableStyles = {
         fontSize: "1rem",

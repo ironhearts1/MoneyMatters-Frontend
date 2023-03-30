@@ -84,6 +84,7 @@ function FutureValue({ netIncome }: futureValueProps) {
                 hoverRadius: 10,
             },
         },
+        maintainAspectRatio: false,
     };
 
     useEffect(() => {
@@ -165,7 +166,7 @@ function FutureValue({ netIncome }: futureValueProps) {
                     />
                 </div>
 
-                <div>{lineChartData.datasets && options ? <Line data={lineChartData} options={options} /> : ""}</div>
+                <div className="line-chart-wrapper">{lineChartData.datasets && options ? <Line data={lineChartData} options={options} style={{ width: "100%", height: "100%" }} /> : ""}</div>
             </div>
         </>
     );

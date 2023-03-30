@@ -33,6 +33,14 @@ function ProfileCard({ profileUserName, handleModalOpen, profileMonthlyIncome, l
         boxShadow: 24,
         p: 4,
     };
+    const updateIncomeStyle = {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        "@media screen and (max-width: 1000px)": {
+            alignItems: "start",
+        },
+    };
     return (
         <>
             {isIncomeModalOpen ? (
@@ -70,7 +78,7 @@ function ProfileCard({ profileUserName, handleModalOpen, profileMonthlyIncome, l
                 <ListGroup flush className="sub-font">
                     <ListGroupItem>Username: {`${profileUserName}`}</ListGroupItem>
                     <ListGroupItem className="my-1">
-                        <Box component="form" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} className="profile-media-query">
+                        <Box component="form" sx={updateIncomeStyle} className="profile-media-query">
                             <p style={{ marginBottom: "0" }}>Monthly Income: {profileMonthlyIncome === undefined ? 0 : profileMonthlyIncome}</p>
                             <Button variant="outlined" sx={{ height: "2em", width: "1em", padding: ".25em" }} color="secondary" className="" onClick={handleUserIncomeModalOpen}>
                                 Update

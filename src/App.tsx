@@ -111,6 +111,10 @@ function App() {
         border: "2px solid #000",
         boxShadow: 24,
         p: 4,
+        "@media screen and (max-width: 1025px)": {
+            width: "90%",
+            height: "50%",
+        },
     };
 
     //useEffect for updating user net income AND total expenses
@@ -243,7 +247,7 @@ function App() {
                             <div className="expense-input-wrapper col-md-4 col-8 order-md-1">
                                 <ExpenseInput username={userLogin} addExpense={handleAddExpense} />
                             </div>
-                            <div className="col-md-2 col-4 order-md-2 test">
+                            <div className="col-md-2 col-4 order-md-2 margin-fix">
                                 <h2 className="main-font">Input your reoccuring expenses here to add them to your account</h2>
                                 <div>
                                     <ArrowBackIcon />
@@ -270,9 +274,9 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="row justify-content-center my-5 paddings ">
+                        <div className="row justify-content-center my-5 alt-padding">
                             {userNetIncome > 0 ? (
-                                <div className="w-75">
+                                <div className="line-chart-width-sizing">
                                     <h2 className="main-font">
                                         This is your monthly profit if it was all invested each month. The average return on the stock market over time is 10%. This chart shows that average +- 2%
                                     </h2>
