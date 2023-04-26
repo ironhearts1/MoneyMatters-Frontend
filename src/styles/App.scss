@@ -88,6 +88,53 @@ body {
 .small-button-grouping {
     display: flex;
 }
+
+//nav styles
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    min-height: 6%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbar-links li {
+    list-style-type: none;
+}
+.navbar-links li:hover {
+    background-color: #555;
+}
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    display: block;
+    font-weight: 800;
+    font-size: 1rem;
+    margin: 0 2em;
+    @media (max-width: 1200px) {
+        font-size: 0.8rem;
+        margin: 0 1em;
+        padding: 0.5rem 0.5rem;
+    }
+    @media (max-width: 800px) {
+        font-size: 0.55rem;
+        margin: 0 0.25em;
+        padding: 0.5rem 0.25rem;
+    }
+}
+
 //hero styles
 
 .hero {

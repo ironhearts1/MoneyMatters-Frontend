@@ -198,7 +198,6 @@ function App() {
             setUserExpenseList(newExpenseList);
         });
     }
-
     return (
         <div className="app-wrapper mt-5">
             <div className="">
@@ -219,14 +218,35 @@ function App() {
                 ) : null}
                 {!userLogin ? null : (
                     <>
-                        <div className="hero paddings">
+                        <nav>
+                            <div className="navbar-links">
+                                <ul>
+                                    <li>
+                                        <a href="#top">Money Matters</a>
+                                    </li>
+                                    <li>
+                                        <a href="#input">Input Expenses</a>
+                                    </li>
+                                    <li>
+                                        <a href="#table">Expense Table</a>
+                                    </li>
+                                    <li>
+                                        <a href="#graph">Expense Graphs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#future-value">Future Value</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div className="hero paddings" id="top">
                             <h1 className="hero-title header-font">Money Matters</h1>
                             <div className="hero-sub">
                                 <h2 className="hero-subtitle header-font">Tracking your expenses and monthly investments for a better future</h2>
                                 <img className="hero-image" src={heroPic} />
                             </div>
                         </div>
-                        <div className="row justify-content-between flex-wrap align-items-center paddings bg-clr-sub ">
+                        <div className="row justify-content-between flex-wrap align-items-center paddings bg-clr-sub " id="input">
                             <div className="col-md-2 col-4 text-end order-md-3">
                                 <h2 className="main-font">Your profile stats! Update your monthly income here</h2>
                                 <div className="">
@@ -254,7 +274,7 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="row my-5 justify-content-center paddings">
+                        <div className="row my-5 justify-content-center paddings" id="table">
                             <div className="col-auto">
                                 <h2 className="text-center main-font">All currently added expenses</h2>
                                 <ExpenseTable expenses={tableExpenses} deleteExpense={handleDeleteExpense} updateExpense={handleUpdateExpense} />
@@ -262,7 +282,7 @@ function App() {
                         </div>
 
                         <div className="row my-5 bg-clr-sub paddings">
-                            <div className="col-12 expense-chart-wrapper">
+                            <div className="col-12 expense-chart-wrapper" id="graph">
                                 <div>
                                     <h2 className="main-font py-md-4 py-1 text-center">Being able to visualize which expenses dominate your budget every month is incredibly important</h2>
                                     <h2 className="main-font py-md-4 py-1 text-center">
@@ -274,7 +294,7 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className="row justify-content-center my-5 alt-padding">
+                        <div className="row justify-content-center my-5 alt-padding" id="future-value">
                             {userNetIncome > 0 ? (
                                 <div className="line-chart-width-sizing">
                                     <h2 className="main-font">
